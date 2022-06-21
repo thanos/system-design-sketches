@@ -82,3 +82,70 @@ Use __broadway__ or __flow__ to handle back pressure and partitioning
 # Logging, Monitoring,  and Telemetry, Automation
 
 
+
+
+## Estimations
+
+### Sizes
+
+|  bits |  size |  
+|---|---|
+| 10 | 1kb  | 
+| 20 | 1 Mb | 
+| 30 | 1 Gb |
+| 40 | 1 Tb |
+| 50 | 1 Pb |
+
+
+### Latency
+
+| unit | in seconds |
+|--|--:|
+| 1ns | 1/1,000,000,000s |
+| 1us | 1/1,000,000s |
+| 1ms | 1/1,000 |
+
+| Op | Time | Relative Time |
+|----|:------:|---------------:|
+| L1 Read | 0.5ns | 1  |
+| branch miss | 5ns | 10 |
+| L2 Read | 7ns | 14 |
+| Mutex op | 100ns | 200 |
+| Ram op | 100ns | 200 |
+| 1k zippy | 10kns 10us | 20,000 |
+| 1k sent over 1Gbps | 10kns 10us | 20,000 |
+| 1MB read from RAM | 250kns 250us | 500,000 |
+| round trip same data center | 500kns 500us | 1,000,000 |
+| Disk seek | 10m ns 10ms | 20,000,000 |
+| 1MB from the net| 10m ns 10ms | 20,000,000 |
+| 1MB from disk| 30m ns 30ms | 60,000,000 |
+| packet CA to EU to CA| 150m ns 150ms | 300,000,000 |
+
+see: https://colin-scott.github.io/personal_website/research/interactive_latency.html
+
+
+
+## High Availability
+
+Erlang - nine nines
+Cloud three nines
+Cloud load balancer 4 nines
+
+
+| Availability | Down Time per Day | Down Time per Year |
+|---|---|---|
+| 99% | 14.4 minutes | 3.65 days |
+| 99.9% | 1.4 minutes | 8.77 hours |
+| 99.99% | 8.64 seconds | 52.6 minutes |
+| 99.999% | 864 ms | 5.26 minutes |
+| 99.9999% | 86 ms | 3.156 seconds |
+
+### Twitter 
+
+#### Assumptions
+ * 300 million monthly active users
+ * 50% use daily
+ * 2 tweets per user per day
+ * 10% contain media
+ * store data for 5 years ?
+
