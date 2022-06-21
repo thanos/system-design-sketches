@@ -23,8 +23,12 @@ Understand what you need on the heap.
 
 ### Caching Web side
 Dificult to get right
-CND all static enities and cache all psuedo static pages
-Use edge caches for businnes needs 
+Content delivery network (__CDN__) all static enities and cache all psuedo static pages - i.e edge cache
+  * whatch cost
+  * When to invalidate
+  * back up (SPOF) ??
+Use edge caches for businnes needs - redis, memsql
+USE __CRTDs__ for maintaining consintency
 Use caching to protect the db - ie against UI data intesive requests such as pivoting on end of day.  For isntanece reporting and analytics
 consider special read column  db such as __clickhouse__.
 
